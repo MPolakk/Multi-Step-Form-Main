@@ -1,0 +1,51 @@
+.first-step {
+   display: flex;
+   flex-direction: column;
+   position: absolute;
+   width: 90%;
+   min-height: 40%;
+   top:15%;
+   left:50%;
+   background-color: hsl(0, 0%, 100%);
+   transform: translateX(-50%);
+   padding: 30px 20px;
+   font-family: 'Ubuntu', sans-serif;
+   color: hsl(213, 96%, 18%);
+   border-radius: 5px;
+   h1 {
+      font-size: 20px;
+      font-weight: 700;
+      
+      
+   }
+   p {
+      font-size: 14px;
+      margin: 15px 0;
+      color: hsl(231, 11%, 63%);
+
+   }
+   form {
+      display: flex;
+      flex-direction: column;
+      font-weight: 500;
+      font-size: 12px;
+      label {
+         margin-bottom: 5px;
+      }
+      input {
+         border: 1px solid hsl(229, 24%, 87%);
+         border-radius: 3px;
+         margin: 2px 0;
+         padding: 10px 15px;
+         // font-size: 10px;
+         color: hsl(231, 11%, 63%);
+         margin-bottom: 10px;
+      }
+   }
+
+
+
+
+
+
+}
