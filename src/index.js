@@ -1,5 +1,8 @@
 import {createRoot} from 'react-dom';
-import FirstStep from './components/First-Step';
+import FirstStep from './components/FirstStep';
+import SecStep from './components/SecStep'
+import ButtonsBar from './components/ButtonsBar'
+
 import './styles/main.scss'
 
 function App() {
@@ -13,9 +16,13 @@ function App() {
           <li className="step3">3</li>
           <li className="step4">4</li>
         </ul>
-        <button className="app__nextbutton">Next Step</button>
+        
       </div>
-      <FirstStep></FirstStep>
+      <div className='app__form'>
+      <SecStep></SecStep>
+      
+      </div>
+      <ButtonsBar></ButtonsBar>
     </>
   );
 }

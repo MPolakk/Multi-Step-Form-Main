@@ -1,6 +1,6 @@
 const FirstStep = () => {
    return ( 
-      <div className='first-step'>
+      <div className="first-step">
          <h1>Personal info</h1>
          <p>Please provide your name, email, address, and phone number.</p>
          <form>
@@ -14,6 +14,7 @@ const FirstStep = () => {
 
 
          </form>
+         
       </div>
     );
 }
