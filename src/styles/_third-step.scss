@@ -1,0 +1,72 @@
+   .third-step__plans {
+
+
+      label {
+
+         position: relative;
+         display: grid;
+         grid-template-areas: 
+         "checkbox title price"
+         "checkbox desc price";
+         grid-template-columns: 1fr 3fr 1fr ;
+         grid-template-rows: 50%  50% ;
+         border:1px solid hsl(231, 11%, 63%);
+         border-radius: 5px;
+         margin: 10px 0;
+         // padding: 10px 0;
+         min-height: 60px;
+         align-items: center;
+
+         
+
+         input[type='checkbox'] {
+            grid-area: checkbox;
+            height: 20px;
+            width: 20px;
+            border: 1px solid hsl(231, 11%, 63%);
+            border-radius: 5px;
+            justify-self: center;
+           
+            
+         }
+         input[type='checkbox']:checked {
+           position: relative;
+            
+            background-color: hsl(243, 100%, 62%);
+            fill: white;
+         }
+         
+         input[type='checkbox']:checked::after {
+            position: absolute;
+            content: "";
+            
+            background-image: url('../assets/images/check-solid.svg');
+            
+            border-radius: 2px;
+            width: 80%;
+            height: 80%;
+            left: 50%;
+            top:50%;
+            transform: translate(-50%, -50%);
+            
+            
+         }
+
+         h2 {
+            grid-area: title;
+            align-self: flex-end;
+            margin-bottom: 5px;
+         }
+         span {
+            grid-area: desc;
+            align-self: flex-start;
+         }
+         .price {
+            color: hsl(243, 100%, 62%);
+            font-weight: 400;
+            grid-area: price;
+            align-self: center;
+         }
+      }
+
+   }

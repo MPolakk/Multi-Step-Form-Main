@@ -1,7 +1,9 @@
 import {createRoot} from 'react-dom';
 import FirstStep from './components/FirstStep';
-import SecStep from './components/SecStep'
-import ButtonsBar from './components/ButtonsBar'
+import SecStep from './components/SecStep';
+import ThirdStep from './components/ThirdStep';
+import ButtonsBar from './components/ButtonsBar';
+
 
 import './styles/main.scss'
 
@@ -19,7 +21,7 @@ function App() {
         
       </div>
       <div className='app__form'>
-      <SecStep></SecStep>
+      <ThirdStep></ThirdStep>
       
       </div>
       <ButtonsBar></ButtonsBar>
