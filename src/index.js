@@ -3,6 +3,7 @@ import FirstStep from './components/FirstStep';
 import SecStep from './components/SecStep';
 import ThirdStep from './components/ThirdStep';
 import SumStep from './components/SumStep';
+import LastView from './components/LastView';
 import ButtonsBar from './components/ButtonsBar';
 
 
@@ -22,7 +23,7 @@ function App() {
         
       </div>
       <div className='app__form'>
-      <SumStep></SumStep>
+      <LastView></LastView>
       
       </div>
       <ButtonsBar></ButtonsBar>

@@ -1,0 +1,25 @@
+.last-view {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+   padding: 30px 0;
+   img {
+      width: 15%;
+      
+   }
+   h1 {
+      width: 100%;
+      margin: 15px 0;
+      text-align: center;
+   }
+   p {
+      line-height: 20px;
+      text-align: center;
+      margin: 0;
+      
+   }
+   p:nth-child(3) {
+      width: 80%;
+   }
+   
+}
