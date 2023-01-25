@@ -2,6 +2,7 @@ import {createRoot} from 'react-dom';
 import FirstStep from './components/FirstStep';
 import SecStep from './components/SecStep';
 import ThirdStep from './components/ThirdStep';
+import SumStep from './components/SumStep';
 import ButtonsBar from './components/ButtonsBar';
 
 
@@ -21,7 +22,7 @@ function App() {
         
       </div>
       <div className='app__form'>
-      <ThirdStep></ThirdStep>
+      <SumStep></SumStep>
       
       </div>
       <ButtonsBar></ButtonsBar>

@@ -1,0 +1,84 @@
+.sum-step {
+   display: flex;
+   flex-direction: column;
+   background-color:  hsl(231, 100%, 99%);
+   padding: 15px;
+   border-radius: 5px;
+  
+
+   .sum-step__plan {
+      display: grid;
+      grid-template: 1fr 1fr / 2fr 1fr;
+      justify-items: start;
+      .plan {
+       grid-area: 1 / 1 / 2 / 2;
+       align-self: flex-start;
+       
+      }
+      .price {
+        grid-area: 1 / 2 / 3 / 3;
+        justify-self: end;
+        align-self: center;
+        font-weight: 700;
+        color:hsl(213, 96%, 18%);
+        
+      }
+      .change-button {
+         grid-area: 2/1/3/2;
+         border: none;
+         background-color: transparent;
+         padding: 0;
+         text-decoration: underline 1.5px;
+         color: hsl(231, 11%, 63%);
+         font-weight: 500;
+         align-self: flex-end;
+
+      }
+
+   }
+   .line {
+      width: 100%;
+      height: 1px;
+      background-color: hsl(217, 100%, 97%);
+      margin: 10px 0;
+   }
+
+   .sum-step__bill{
+      display: flex;
+      flex-wrap:wrap;
+      align-items: center;
+      
+      .bill__add-on {
+         color: hsl(231, 11%, 63%);
+         flex-basis: 70%;
+         padding: 6px 0;
+      }
+
+      .bill__price {
+         flex-basis: 30%;
+         color: hsl(213, 96%, 18%);
+         text-align: end;
+      }
+
+
+
+
+
+   }
+
+   
+}
+
+.sum-result {
+   display: flex;
+   width: 100%;
+   justify-content: space-between;
+   margin: 20px 0;
+   padding: 0 15px;
+
+   .price {
+      color: hsl(243, 100%, 62%);
+      font-size: 14px;
+      font-weight: 700;
+   }
+}
