@@ -38,8 +38,8 @@ const SecStep = () => {
             <div className="plans__switch">
                <span className="switch--active">Monthly</span>
 
-               <div class="switch__toggle">
-                  <label for="toggle_input"></label>
+               <div className="switch__toggle">
+                  <label htmlFor="toggle_input"></label>
                   <input type='checkbox' name="toggle__input"></input>
                   
                </div>

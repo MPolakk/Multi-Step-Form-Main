@@ -27,6 +27,9 @@ span {
    color: hsl(231, 11%, 63%);
    font-size: 12px;
 }
+.app {
+   height: 100vh;
+}
 .app__bg {
    position:absolute;
    background-image: url('../assets/images/bg-sidebar-mobile.svg');
