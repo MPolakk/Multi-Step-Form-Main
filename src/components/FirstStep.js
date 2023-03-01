@@ -1,14 +1,18 @@
-import {useEffect, useCallback} from 'react'
-
+import {useEffect, useCallback} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import {nameBool, phoneBool, emailBool, phonePressPlus} from '../features/firstStepReducer'
 
 const FirstStep = (props) => {
-   const {handleInput, setNameValid, setEmailValid, email, name, phone, setPhonePressPlus, setPhoneValid} = props;   
- //Name Validation
+  const {handleInput} = props;
 
+  const {nameValid, phoneValid, emailValid, email, name, phone} = useSelector(state => state.firstStepReducer)
+  const dispatch = useDispatch();
+  
+ //Name Validation
 
  
 
-   const nameValidation = useCallback(() => {
+   const nameValidation = () => {
      
    //Only two words
       let twoWordValid;
@@ -44,16 +48,21 @@ const FirstStep = (props) => {
  
   
   if(spaceValid.length == 1 && twoUpperCaseValid.length == 2 && twoWordValid ) {
-    setNameValid(true)
-  } else setNameValid(false)
+    dispatch(nameBool(true))
+    
+    return true
+  } else  {
+    dispatch(nameBool(false))
+    return false
+    }
 
-  },[name] );
+  }
  //----------------------------//
  
  
  //Email Validation
    
-   const emailValidation = useCallback(() => {
+   const emailValidation = () => {
       const emailSplit = email.split('')
       const emailSplitTwoParts = email.split('@')[1]
       let dotCheck = [];
@@ -78,10 +87,12 @@ const FirstStep = (props) => {
 
       
       if(atSymbol.length == 1 && dotCheck.length == 1) {
-        setEmailValid(true)
-      } else setEmailValid(false)
-
-   }, [email])
+        dispatch(emailBool(true))
+        return true
+      } else {
+        dispatch(emailBool(false))
+        return false }
+   }
   
     //----------------------------//
 
@@ -90,11 +101,14 @@ const FirstStep = (props) => {
      const phoneValidation = () => {
       if(/^\+\d{1}\s\d{3}\s\d{3}\s\d{3}$/.test(phone)) {
         
-        setPhoneValid(true)
-      } else setPhoneValid(false)
-
+        dispatch(phoneBool(true))
+        return true
+      } else {
+        dispatch(phoneBool(false))
+        return false }
       }
-    
+
+      
     
     //----------------------------//
 
@@ -102,8 +116,9 @@ const FirstStep = (props) => {
    nameValidation();
    emailValidation();
    phoneValidation();
- });
 
+ });
+ 
 
    return ( 
       <div className="first-step">
@@ -111,19 +126,21 @@ const FirstStep = (props) => {
          <p>Please provide your name, email, address, and phone number.</p>
          <form>
             <label htmlFor='name'>Name</label>
-
             <input 
+            className = {!nameValid && name != '' ? "input--valid" : ""}
+           
             placeholder="e.g. Stephen King"
             onChange={handleInput} 
             type='text' 
             name='name'
             value={name}>
-
+            
             </input>
 
             <label htmlFor='email' >Email Address</label>
             
             <input 
+            className = {!emailValid && email != '' ? "input--valid" : ""}
             placeholder="e.g. stephenking@lorem.com"
             onChange={handleInput} 
             type='email' 
@@ -135,23 +152,15 @@ const FirstStep = (props) => {
             <label htmlFor='phone'>Phone Number</label>
 
             <input 
+            className = {!phoneValid && phone != ''? "input--valid" : ""}
             placeholder="e.g. +1 234 567 890"
             value= {phone}
-            onFocus={() => {
-            //   if(phone.length == 0) {
-            //   setPhone('+')
-            // }
-            }}
-            onBlur={() => {
-            //   if(phone == '+') {
-            //   setPhone('')
-            // } else setPhone(phone)
-            }}
+            maxLength = "14"
             onKeyDown={(e)=> {
               
               if(e.key == '+' ) {   
-                setPhonePressPlus(true)
-              } else setPhonePressPlus(false)
+                dispatch(phonePressPlus(true))
+              } else dispatch(phonePressPlus(false))
 
             }}
             
@@ -159,7 +168,6 @@ const FirstStep = (props) => {
             onChange={handleInput} 
             type='text'
             name='phone'
-            maxLength='14'
             required
             >
             

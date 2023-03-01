@@ -19,6 +19,10 @@
          color: hsl(231, 11%, 63%);
          margin-bottom: 10px;
       }
+      .input--valid {
+         border-color: red;
+         border-width: 2px;
+      }
    }
 
 
