@@ -65,19 +65,27 @@ function App() {
   }
 
   //FristStep
-  const phoneCorrectValue = useCallback((e) => {
+  const phoneCorrectValue = (e) => {
+    const isOnePlus = e.target.value.split('').filter((item) => {
+      console.log(item)
+      return item == '+'
+    })
     
 
    
     if(phonePressPlus) {
       return;
     } 
-    
-    
-    
-    dispatch(phoneState(e.target.value.replace(/(\d{1})(\d{3})(\d{3})(\d{3})/, '+$1 $2 $3 $4')))
-    
-  }, [phone]);
+    if(isOnePlus.length == 0) {
+      dispatch(phoneState(e.target.value.replace(/(\d{1})(\d{3})(\d{3})(\d{3})/, '+$1 $2 $3 $4')))
+
+    } else {
+      
+    dispatch(phoneState(e.target.value.replace(/(\d{1})(\d{3})(\d{3})(\d{3})/, '$1 $2 $3 $4')))
+  }
+
+  
+  };
   //------------------------------------//
 
 

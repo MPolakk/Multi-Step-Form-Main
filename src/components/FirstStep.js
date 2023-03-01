@@ -1,6 +1,6 @@
 import {useEffect, useCallback} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {nameBool, phoneBool, emailBool, phonePressPlus} from '../features/firstStepReducer'
+import {nameBool, phoneBool, emailBool, phonePressPlus, phoneState} from '../features/firstStepReducer'
 
 const FirstStep = (props) => {
   const {handleInput} = props;
@@ -99,6 +99,15 @@ const FirstStep = (props) => {
     //Phone Validation
    
      const phoneValidation = () => {
+     
+      
+       
+
+      
+      if(phone.length >= 15) {
+        dispatch(phoneState(phone.slice(0,14)))
+      } 
+     
       if(/^\+\d{1}\s\d{3}\s\d{3}\s\d{3}$/.test(phone)) {
         
         dispatch(phoneBool(true))
@@ -106,6 +115,9 @@ const FirstStep = (props) => {
       } else {
         dispatch(phoneBool(false))
         return false }
+
+
+       
       }
 
       
