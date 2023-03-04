@@ -45,7 +45,8 @@ const SecStep = () => {
                <h2>
                   Arcade
                </h2>
-               <span>$9/mo</span>
+               {monthlyPlan ? <span>$9/mo</span> : <span>$90/yr</span>}
+               {!monthlyPlan ? <span className="plans__bonus">2 months free</span> : null }
             </div>
 
             <div onClick={handleActivePlan} className= {changeActivePlan('Advanced')}>
@@ -53,7 +54,8 @@ const SecStep = () => {
                <h2>
                   Advanced
                </h2>
-               <span>$12/mo</span>
+               {monthlyPlan ? <span>$12/mo</span> : <span>$120/yr</span>}
+               {!monthlyPlan ? <span className="plans__bonus">2 months free</span> : null }
             </div>
 
             <div onClick={handleActivePlan} className= {changeActivePlan('Pro')} >
@@ -61,7 +63,8 @@ const SecStep = () => {
                <h2>
                   Pro
                </h2>
-               <span>$15/mo</span>
+               {monthlyPlan ? <span>$15/mo</span> : <span>$150/yr</span>}
+               {!monthlyPlan ? <span className="plans__bonus">2 months free</span> : null }
             </div>
             
          </div>

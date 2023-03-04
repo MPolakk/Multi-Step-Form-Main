@@ -16,7 +16,7 @@
          // padding: 10px 0;
          min-height: 60px;
          align-items: center;
-
+         
          
 
          input[type='checkbox'] {
@@ -26,14 +26,14 @@
             border: 1px solid hsl(231, 11%, 63%);
             border-radius: 5px;
             justify-self: center;
-           
+            pointer-events: none;
             
          }
          input[type='checkbox']:checked {
-           position: relative;
-            
+            position: relative;
             background-color: hsl(243, 100%, 62%);
             fill: white;
+            pointer-events: none;
          }
          
          input[type='checkbox']:checked::after {
@@ -48,7 +48,7 @@
             left: 50%;
             top:50%;
             transform: translate(-50%, -50%);
-            
+            pointer-events: none;
             
          }
 
@@ -56,16 +56,19 @@
             grid-area: title;
             align-self: flex-end;
             margin-bottom: 5px;
+            pointer-events: none;
          }
          span {
             grid-area: desc;
             align-self: flex-start;
+            pointer-events: none;
          }
          .price {
             color: hsl(243, 100%, 62%);
             font-weight: 400;
             grid-area: price;
             align-self: center;
+            pointer-events: none;
          }
       }
 

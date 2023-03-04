@@ -18,8 +18,8 @@ import '../styles/main.scss'
 
 function App() {
  
-  const [pageNum, setPageNum] = useState(2);
-  const {nameValid, phoneValid, emailValid, phone, phonePressPlus} = useSelector(state => state.firstStepReducer)
+  const [pageNum, setPageNum] = useState(4);
+  const {nameValid, phoneValid, emailValid, phonePressPlus} = useSelector(state => state.firstStepReducer)
 
   const dispatch = useDispatch();
   
