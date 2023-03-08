@@ -9,11 +9,13 @@ import App from './components/App'
 // As of React 18
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
+  
   <Provider store= {store}>
-  <React.StrictMode>
+  
     
     <App />
     
-  </React.StrictMode>
+ 
   </Provider>
+ 
 )

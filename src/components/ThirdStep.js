@@ -1,13 +1,14 @@
 import { useDispatch, useSelector } from "react-redux";
-import {onlineServiceActive, largerStorageActive,  customProfileActive} from '../features/thirdStepReducer'
-
+import {onlineServiceActive, largerStorageActive,  customProfileActive} from '../features/thirdStepReducer';
+import { useEffect } from "react";
 
 
 const ThirdStep = () => {
-
-   const {onlineService, largerStorage, customProfile} = useSelector(state => state.thirdStepReducer)
-   const {monthlyPlan} = useSelector(state=> state.secStepReducer)
-   const dispatch = useDispatch()
+   const {thirdStepReducer, secStepReducer, prices} = useSelector(state => state);
+   const {onlineService, largerStorage, customProfile} = thirdStepReducer;
+   const {monthlyPlan} = secStepReducer;
+   const {onlineServicePrice, largerStoragePrice, customProfilePrice} = prices;
+   const dispatch = useDispatch();
 
 
 
@@ -47,7 +48,7 @@ const ThirdStep = () => {
             <input readOnly checked={onlineService ? true : false} name='online-service' type='checkbox'></input>
             <h2>Online Service</h2>
             <span>Access to multiplayer games</span>
-            <span className='price'>{monthlyPlan ? "+$1/mo" : "+$10/yr"}</span>
+            <span className='price'>{monthlyPlan ? `+$${onlineServicePrice}/mo` : `+$${onlineServicePrice}0/yr`}</span>
             
          </label>
 
@@ -56,7 +57,7 @@ const ThirdStep = () => {
             <input readOnly checked={largerStorage ? true : false} name='larger-storage' type='checkbox' ></input>
             <h2>Larger storage</h2>
             <span>Extra 1TB of cloud save</span>
-            <span className='price'>{monthlyPlan ? "+$2/mo" : "+$20/yr"}</span>
+            <span className='price'>{monthlyPlan ? `+$${largerStoragePrice}/mo` : `+$${largerStoragePrice}0/yr`}</span>
          </label>
 
          <label onChange={activeAddOn}>
@@ -65,7 +66,7 @@ const ThirdStep = () => {
             
             <h2>Customizable profile</h2>
             <span>Custom theme on your profile</span>
-            <span className='price'>{monthlyPlan ? "+$2/mo" : "+$20/yr"}</span>
+            <span className='price'>{monthlyPlan ? `+$${customProfilePrice}/mo` : `+$${largerStoragePrice}0/yr`}</span>
             
          </label>
 

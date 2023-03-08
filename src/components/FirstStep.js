@@ -128,8 +128,8 @@ const FirstStep = (props) => {
    nameValidation();
    emailValidation();
    phoneValidation();
-
- });
+   
+ }, [name, email, phone]);
  
 
    return ( 

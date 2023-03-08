@@ -1,5 +1,5 @@
 
-import { useState, useCallback} from 'react';
+import { useState, useEffect} from 'react';
 import { useSelector, useDispatch} from 'react-redux'
 import {nameState, phoneState, emailState} from '../features/firstStepReducer'
 import FirstStep from './FirstStep';
@@ -18,7 +18,7 @@ import '../styles/main.scss'
 
 function App() {
  
-  const [pageNum, setPageNum] = useState(4);
+  const [pageNum, setPageNum] = useState(1);
   const {nameValid, phoneValid, emailValid, phonePressPlus} = useSelector(state => state.firstStepReducer)
 
   const dispatch = useDispatch();
@@ -32,9 +32,11 @@ function App() {
   }
   
 
-  const changePageNext = () => {
+  const changePageNext = (e) => {
     
-   
+   if(e.target.innerHTML == "Confirm") {
+    setPageNum(5)
+   }
     
 
    
@@ -49,6 +51,23 @@ function App() {
 
   }
   
+  function handleInput(e) {
+
+
+    switch (e.target.name) {
+      case 'name':
+        dispatch(nameState(e.target.value));
+        break;
+      case 'email':
+        dispatch(emailState(e.target.value));
+        break;
+      case 'phone':
+        phoneCorrectValue(e);
+
+        break;
+    }
+  }
+
   const changeStep = () => {
     switch(pageNum) {
       case 1: 
@@ -60,6 +79,8 @@ function App() {
       return <ThirdStep/>;
       case 4: 
       return <SumStep/>;
+      case 5: 
+      return <LastView/>;
 
     }
   }
@@ -67,7 +88,6 @@ function App() {
   //FristStep
   const phoneCorrectValue = (e) => {
     const isOnePlus = e.target.value.split('').filter((item) => {
-      console.log(item)
       return item == '+'
     })
     
@@ -89,27 +109,10 @@ function App() {
   //------------------------------------//
 
 
-  function handleInput(e) {
 
-
-    switch (e.target.name) {
-      case 'name':
-        dispatch(nameState(e.target.value));
-        break;
-      case 'email':
-        dispatch(emailState(e.target.value));
-        break;
-      case 'phone':
-        phoneCorrectValue(e);
-
-        break;
-    }
-  }
-   // For Mobile Height. 
-  //  useEffect(() => {
-  //   setMobileHeight(window.innerHeight - (window.outerHeight - window.innerHeight))
-    
-  //  }, [])
+   useEffect(() => {
+    changeStep()
+   }, [])
   
 
    
@@ -126,7 +129,7 @@ function App() {
           <li className={pageNum == 1 ? 'step--active' : ''}>1</li>
           <li className={pageNum == 2 ? 'step--active' : ''}>2</li>
           <li className={pageNum == 3 ? 'step--active' : ''}>3</li>
-          <li className={pageNum == 4 ? 'step--active' : ''}>4</li>
+          <li className={pageNum >= 4  ? 'step--active' : ''}>4</li>
         </ul>
         
       </div>
@@ -134,7 +137,7 @@ function App() {
       {changeStep()}
       </div>
      
-      <ButtonsBar changePageBack = {changePageBack} changePageNext = {changePageNext} pageNum={pageNum}></ButtonsBar>
+      {pageNum != 5 ? <ButtonsBar changePageBack = {changePageBack} changePageNext = {changePageNext} pageNum={pageNum}  /> : null }
       </div>
  
   );

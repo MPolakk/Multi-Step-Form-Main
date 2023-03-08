@@ -1,14 +1,21 @@
 import arcadeIcon from '../assets/images/icon-arcade.svg'
 import advancedIcon from '../assets/images/icon-advanced.svg'
 import proIcon from '../assets/images/icon-pro.svg'
-import {useState} from 'react';
+
 import {useDispatch, useSelector} from 'react-redux';
 import {changePlan, changeSwitch} from '../features/secStepReducer'
 
+
+
+
+
 const SecStep = () => {
-  //PLANS
   
-   const {activePlan, monthlyPlan} = useSelector(state=> state.secStepReducer)
+  //PLANS
+   const { secStepReducer, prices} = useSelector(state => state);
+   const {activePlan, monthlyPlan} = secStepReducer;
+   const {arcadePrice, advancedPrice, proPrice, onlineServicePrice, largerStoragePrice, customProfilePrice, totalPrice} = prices;
+
    const dispatch = useDispatch()
 
    const handleActivePlan = (e) => {
@@ -28,11 +35,6 @@ const SecStep = () => {
    const handleActiveSwitch = () => {
       dispatch(changeSwitch(!monthlyPlan))
    }
-
-
-
-
-
    
 
    return ( 
@@ -45,7 +47,7 @@ const SecStep = () => {
                <h2>
                   Arcade
                </h2>
-               {monthlyPlan ? <span>$9/mo</span> : <span>$90/yr</span>}
+               {monthlyPlan ? <span>${arcadePrice}/mo</span> : <span>${arcadePrice}0/yr</span>}
                {!monthlyPlan ? <span className="plans__bonus">2 months free</span> : null }
             </div>
 
@@ -54,7 +56,7 @@ const SecStep = () => {
                <h2>
                   Advanced
                </h2>
-               {monthlyPlan ? <span>$12/mo</span> : <span>$120/yr</span>}
+               {monthlyPlan ? <span>${advancedPrice}/mo</span> : <span>${advancedPrice}0/yr</span>}
                {!monthlyPlan ? <span className="plans__bonus">2 months free</span> : null }
             </div>
 
@@ -63,7 +65,7 @@ const SecStep = () => {
                <h2>
                   Pro
                </h2>
-               {monthlyPlan ? <span>$15/mo</span> : <span>$150/yr</span>}
+               {monthlyPlan ? <span>${proPrice}/mo</span> : <span>${proPrice}0/yr</span>}
                {!monthlyPlan ? <span className="plans__bonus">2 months free</span> : null }
             </div>
             
