@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
 import {onlineServiceActive, largerStorageActive,  customProfileActive} from '../features/thirdStepReducer';
-import { useEffect } from "react";
 
 
 const ThirdStep = () => {
@@ -43,7 +42,7 @@ const ThirdStep = () => {
       <div className='third-step__plans'>
 
          
-         <label onChange={activeAddOn}>
+         <label onChange={activeAddOn} style={onlineService? {backgroundColor: "hsl(217, 100%, 97%)", borderColor: "hsl(213, 96%, 18%)"} : null}>
             
             <input readOnly checked={onlineService ? true : false} name='online-service' type='checkbox'></input>
             <h2>Online Service</h2>
@@ -52,7 +51,7 @@ const ThirdStep = () => {
             
          </label>
 
-         <label onChange={activeAddOn}>
+         <label onChange={activeAddOn} style={largerStorage? {backgroundColor: "hsl(217, 100%, 97%)", borderColor: "hsl(213, 96%, 18%)"} : null}>
             
             <input readOnly checked={largerStorage ? true : false} name='larger-storage' type='checkbox' ></input>
             <h2>Larger storage</h2>
@@ -60,7 +59,7 @@ const ThirdStep = () => {
             <span className='price'>{monthlyPlan ? `+$${largerStoragePrice}/mo` : `+$${largerStoragePrice}0/yr`}</span>
          </label>
 
-         <label onChange={activeAddOn}>
+         <label onChange={activeAddOn} style={customProfile ? {backgroundColor: "hsl(217, 100%, 97%)", borderColor: "hsl(213, 96%, 18%)"} : null}>
             
             <input readOnly checked={customProfile ? true : false} name='custom-profile' type='checkbox'></input>
             

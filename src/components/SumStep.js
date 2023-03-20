@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import AddOn from './sumStepComponents/AddOns'
 import { useEffect, useCallback} from "react";
+import {pageNumHandler} from '../features/firstStepReducer'
 import { totalPriceReducer, activePlanPriceReducer } from '../features/prices';
 const SumStep = () => {
    const {secStepReducer, thirdStepReducer, prices} = useSelector(state => (state));
@@ -36,9 +37,15 @@ const SumStep = () => {
       if(!monthlyPlan) {
          totalPrice = totalPrice * 10
       }
-      console.log(totalPrice)
       dispatch(totalPriceReducer(totalPrice))
    }
+
+   const changePlanHandler = () => {
+      dispatch(pageNumHandler(2));
+
+
+   }
+
 
    useEffect(() => {
       totalPriceHandle()
@@ -51,8 +58,11 @@ const SumStep = () => {
          <p>Dobule-check everything looks OK before confirming</p>
          <div className='sum-step'>
             <div className='sum-step__plan'>
-               <h2 className='plan'>{activePlan} ({monthlyPlan ? "Monthly": "Yearly"}) </h2>
-               <button className='change-button'>Change</button>
+               <ul>
+               <li className='plan a'>{activePlan} ({monthlyPlan ? "Monthly": "Yearly"}) </li>
+               </ul>
+               <button className='change-button' onClick={changePlanHandler}>Change</button>
+               
                <span className='price'>{monthlyPlan ? `${activePlanPrice}$/mo`: `$${activePlanPrice}0/yr`}</span>
             </div>
             <span className='line'></span>

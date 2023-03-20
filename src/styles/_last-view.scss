@@ -3,6 +3,11 @@
    flex-wrap: wrap;
    justify-content: center;
    padding: 30px 0;
+   @include lg {
+    display: flex;
+    
+
+   }
    img {
       width: 15%;
       

@@ -1,8 +1,20 @@
 .sec-step {
-   
+   @include lg {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      
+   }
 
    .sec-step__plans {
-     
+      @include lg {
+         display: flex;
+         justify-content: space-between;
+         height: 250px;
+         width: 100%;
+         font-size: 1.2em;
+      }
       .plan {
          display: grid;
          grid-template:
@@ -19,7 +31,17 @@
          border-radius: 5px;
          // justify-content: center;
          align-items: center;
-         
+         @include lg {
+            width: 200px;
+            height: 100%;
+            // margin: 10px;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            padding: 5;
+            
+         }
       
 
       
@@ -27,18 +49,29 @@
             grid-area: a;
             margin: 0 auto;
             pointer-events: none;
+            @include lg {
+               margin: 10px
+            }
          }
          h2 {
             grid-area: b;
             align-self: end;
             margin: 3px;
             pointer-events: none;
+            
+            @include lg {
+               flex-basis: 100%;
+            }
+            
          }
          span {
             grid-area: c;
             align-self: start;
             margin: 3px;
             pointer-events: none;
+            @include lg {
+               flex-basis: 100%;
+            }
          }
          .plans__bonus {
             grid-area: d;
@@ -65,14 +98,19 @@
       border-radius: 5px;
       padding: 10px 0;
       margin-top: 20px;
-
+      @include lg {
+         width: 100%;
+         height: 50px;
+         font-size: 1.2em;
+      }
       .switch--active {
          color: hsl(213, 96%, 18%);
-
+         
       }
 
       span {
          font-weight: 700;
+         
       }
       
       .switch__toggle {
@@ -80,7 +118,9 @@
          justify-content: center;
          align-items: center;
          margin: 0 10px;
-            
+         @include lg{
+            width: 100px;
+         }
          input {
             position: absolute;
             opacity: 0;
@@ -94,21 +134,27 @@
             position: relative;
             align-items: center;
             // left: 0.2em;
+            @include lg{
+            
+            }
          }
          label::before {
             content: "";
-            width: 35px;
-            height: 1em;
+            width: 30px;
+            height: 1.5em;
             background-color: hsl(213, 96%, 18%);
             border-radius: 1em;
+            @include lg{
+               width: 40px;
+            }
          }
          label::after {
             content: "";
             position: absolute;
             left: var(--monthly);
             right: var(--yearly);
-            width: 0.7em;
-            height: 0.7em;
+            width: 1em;
+            height: 1em;
             background-color: hsl(0, 0%, 100%);
             border-radius: 1em;
          }

@@ -1,0 +1,7 @@
+@import './breakpoints';
+
+@mixin lg {
+   @media (min-width: #{$screen-lg-min}) {
+      @content;
+   }
+}

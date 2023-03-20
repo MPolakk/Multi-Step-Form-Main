@@ -8,7 +8,7 @@ const initialState = {
    name: '',
    phone: '',
    phonePressPlus: false,
-
+   pageNum:1,
  }
 
 const firstStepReducer = createSlice({
@@ -35,7 +35,11 @@ const firstStepReducer = createSlice({
     },
     phonePressPlus(state, action) {
       state.phonePressPlus = action.payload
-    }
+    },
+    pageNumHandler(state, action) {
+      state.pageNum = action.payload
+    },
+  
 
 
 
@@ -44,5 +48,5 @@ const firstStepReducer = createSlice({
   },
 })
 
-export const { nameBool, phoneBool, emailBool, emailState, nameState, phoneState, phonePressPlus } = firstStepReducer.actions
+export const { nameBool, phoneBool, emailBool, emailState, nameState, phoneState, phonePressPlus, pageNumHandler} = firstStepReducer.actions
 export default firstStepReducer.reducer

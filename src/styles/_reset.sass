@@ -1,6 +1,5 @@
 *, *:before, *:after
     box-sizing: border-box
-
 html, body, div, span, object, iframe, figure, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, code, em, img, small, strike, strong, sub, sup, tt, b, u, i, ol, ul, li, fieldset, form, label, table, caption, tbody, tfoot, thead, tr, th, td, main, canvas, embed, footer, header, nav, section, video
     margin: 0
     padding: 0
@@ -18,7 +17,13 @@ footer, header, nav, section, main
 body
     line-height: 1
     width: 100%
+    // height: 100vh
     position: relative
+    font-size: 10px
+    @include lg
+        background-color: hsl(217, 100%, 97%)
+        
+    
 
 ol, ul
     list-style: none

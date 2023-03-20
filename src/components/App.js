@@ -1,33 +1,32 @@
 
 import { useState, useEffect} from 'react';
 import { useSelector, useDispatch} from 'react-redux'
-import {nameState, phoneState, emailState} from '../features/firstStepReducer'
+import {pageNumHandler, nameState, phoneState, emailState} from '../features/firstStepReducer'
 import FirstStep from './FirstStep';
 import SecStep from './SecStep';
 import ThirdStep from './ThirdStep';
 import SumStep from './SumStep';
 import LastView from './LastView';
 import ButtonsBar from './ButtonsBar';
-
-
-import '../styles/main.scss'
+import DesktopView from './appComponents/DesktopView';
+import '../styles/main.scss';
 
 
 
 
 
 function App() {
- 
-  const [pageNum, setPageNum] = useState(1);
-  const {nameValid, phoneValid, emailValid, phonePressPlus} = useSelector(state => state.firstStepReducer)
+
+  const {pageNum, nameValid, phoneValid, emailValid, phonePressPlus} = useSelector(state => state.firstStepReducer)
 
   const dispatch = useDispatch();
   
-  
+  const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth > 1440);
 
   const changePageBack = () => {
-    setPageNum(pageNum- 1)
-    
+   
+    dispatch(pageNumHandler(pageNum - 1))
+ 
    
   }
   
@@ -35,16 +34,15 @@ function App() {
   const changePageNext = (e) => {
     
    if(e.target.innerHTML == "Confirm") {
-    setPageNum(5)
+    dispatch(pageNumHandler(5))
    }
     
 
    
     if(nameValid===true && emailValid === true && phoneValid === true) { 
       if(pageNum<= 3) {
-      setPageNum(pageNum+ 1)
+        dispatch(pageNumHandler(pageNum+ 1))
     }
-  
   }
 
    
@@ -103,33 +101,47 @@ function App() {
       
     dispatch(phoneState(e.target.value.replace(/(\d{1})(\d{3})(\d{3})(\d{3})/, '$1 $2 $3 $4')))
   }
-
+ 
   
   };
   //------------------------------------//
 
-
-
    useEffect(() => {
     changeStep()
+
+    const handleResize = () => {
+      setIsLargeScreen(window.innerWidth > 1440);
+    }
+
+    window.addEventListener('resize', handleResize);
+
+    return () => window.removeEventListener('resize', handleResize);
    }, [])
   
 
-   
   return (
    
-    <div className='app' > 
-    {/* style={{
-      height: `${mobileHeight}px` 
-    }} */}
-
+    <div className='app' >
 
       <div className="app__bg">
         <ul className="app__steps">
-          <li className={pageNum == 1 ? 'step--active' : ''}>1</li>
-          <li className={pageNum == 2 ? 'step--active' : ''}>2</li>
-          <li className={pageNum == 3 ? 'step--active' : ''}>3</li>
-          <li className={pageNum >= 4  ? 'step--active' : ''}>4</li>
+          
+          <li>
+          <div className={pageNum == 1 ? 'step--active' : ''}>1</div>
+          {isLargeScreen ? <DesktopView stepNum="1" stepTitle="your info"/> : null}
+          </li>
+          <li>
+          <div className={pageNum == 2 ? 'step--active' : ''}>2</div>
+          {isLargeScreen ? <DesktopView stepNum="2" stepTitle="select plan"/> : null}
+          </li>
+          <li>
+          <div className={pageNum == 3 ? 'step--active' : ''}>3</div>
+          {isLargeScreen ? <DesktopView stepNum="3" stepTitle="add-ons"/> : null}
+          </li>
+          <li>
+          <div className={pageNum >= 4  ? 'step--active' : ''}>4</div>
+          {isLargeScreen ? <DesktopView stepNum="4" stepTitle="summary"/> : null}
+          </li>
         </ul>
         
       </div>
@@ -137,7 +149,7 @@ function App() {
       {changeStep()}
       </div>
      
-      {pageNum != 5 ? <ButtonsBar changePageBack = {changePageBack} changePageNext = {changePageNext} pageNum={pageNum}  /> : null }
+      {pageNum != 5 ? <ButtonsBar changePageBack = {changePageBack} changePageNext = {changePageNext}  pageNum={pageNum}/> : null }
       </div>
  
   );
