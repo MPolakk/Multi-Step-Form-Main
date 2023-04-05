@@ -1,7 +1,8 @@
 # Frontend Mentor - Multi-step form
 
 Projekt do wykonania z [Frontend Mentor](https://www.frontendmentor.io)
-[mpolakk.github.io/Multi-Step-Form-Main/](https://mpolakk.github.io/Multi-Step-Form-Main/)
+
+### [mpolakk.github.io/Multi-Step-Form-Main/](https://mpolakk.github.io/Multi-Step-Form-Main/)
 ### **Rozwiązanie z SS'ami znajduje się na samym dole**
 
 ## **Projekt**
