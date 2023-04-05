@@ -10,7 +10,7 @@ import LastView from './LastView';
 import ButtonsBar from './ButtonsBar';
 import DesktopView from './appComponents/DesktopView';
 import '../styles/main.scss';
-import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useNavigate, useLocation } from "react-router-dom";
 
 
 function App() {
@@ -19,7 +19,7 @@ function App() {
   const dispatch = useDispatch();
 
   const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth > 1440);
-
+  const location = useLocation();
   const navigate = useNavigate();
 
   const changePageBack = () => {
@@ -117,6 +117,7 @@ function App() {
     return () => window.removeEventListener('resize', handleResize);
   }, [])
   useEffect(() => {
+    console.log(location)
     navigate(`${changeStep()}`);
   }, [pageNum])
 
