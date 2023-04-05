@@ -1,15 +1,17 @@
-import { createSlice } from '@reduxjs/toolkit'
+import {
+  createSlice
+} from '@reduxjs/toolkit'
 
-const initialState = { 
-   nameValid: false,
-   phoneValid: false,
-   emailValid: false,
-   email: '',
-   name: '',
-   phone: '',
-   phonePressPlus: false,
-   pageNum:1,
- }
+const initialState = {
+  nameValid: false,
+  phoneValid: false,
+  emailValid: false,
+  email: '',
+  name: '',
+  phone: '',
+  phonePressPlus: false,
+  pageNum: 1,
+}
 
 const firstStepReducer = createSlice({
   name: 'firstStepReducer',
@@ -18,14 +20,14 @@ const firstStepReducer = createSlice({
     nameBool(state, action) {
       state.nameValid = action.payload;
     },
-    phoneBool(state, action ) {
+    phoneBool(state, action) {
       state.phoneValid = action.payload;
     },
     emailBool(state, action) {
       state.emailValid = action.payload;
     },
     emailState(state, action) {
-      state.email= action.payload
+      state.email = action.payload
     },
     nameState(state, action) {
       state.name = action.payload
@@ -39,7 +41,7 @@ const firstStepReducer = createSlice({
     pageNumHandler(state, action) {
       state.pageNum = action.payload
     },
-  
+
 
 
 
@@ -48,5 +50,14 @@ const firstStepReducer = createSlice({
   },
 })
 
-export const { nameBool, phoneBool, emailBool, emailState, nameState, phoneState, phonePressPlus, pageNumHandler} = firstStepReducer.actions
+export const {
+  nameBool,
+  phoneBool,
+  emailBool,
+  emailState,
+  nameState,
+  phoneState,
+  phonePressPlus,
+  pageNumHandler
+} = firstStepReducer.actions
 export default firstStepReducer.reducer
