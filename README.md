@@ -13,6 +13,12 @@ Chciałem uzyskać efekt autouzupełniania poprawną formą numeru telefonu dla 
 
 Stan aplikacji jest postawiony na Reduxie. Być może znalazłoby się kilka zbędnych wartości które można by usunąć bądź zamienić i nie mam pewności czy użycie createSlice jest poprawne(sprawdziłem i createSlice zastępuje stare metody implementacji reduxa i usuwa zbędny boilerplate).
 
+## TechStack:
+  React
+  React Router
+  Redux
+  Sass
+
 ## **Do poćwiczenia**
 
 Można jeszcze bardziej wykorzystać potencjał Reacta i zrobić kilka mniejszych komponentów dla elementów które się powtarzają.
@@ -23,7 +29,7 @@ Napisać jakiś backend z bazą danych.
 
 Napewno bardziej przemyśleć plan nazewnictwa i rozdzielenia na komponenty. Gdybym wrócił do tego projektu za kilka miesięcy dłuższą chwile zajęło by przypomnienie sobie co gdzie jest.
 
-Napotkałem się z jednym bardzo poważnym problemem który mnie męczył czyli podwójne wywołanie useEffect nawet przy zależnościach z pustą tablicą. Problemem był StrictMode co oczywiście było zawarte w dokumentacji no ale komu by się chciało tam zaglądnąć :>
+Napotkałem się z jednym bardzo poważnym problemem który mnie męczył czyli podwójne wywołanie useEffect nawet przy zależnościach z pustą tablicą. Problemem był StrictMode co oczywiście było zawarte w dokumentacji.
 
 ## **Rozwiązanie**
 
